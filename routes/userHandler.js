@@ -48,6 +48,9 @@ get(function (req, res) {
         if (err){
             res.send("DB Error : " + err);
         }
+        else if (!user){
+            res.send("Error: User not present");
+        }
         else {
             res.send(user);
         }

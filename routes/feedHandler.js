@@ -42,4 +42,67 @@ router.route('/').
 
 });
 
+router.route('/comment/:feedId').
+    post(function (req, res) {
+
+    Feed.findById(req.params.feedId, function (err, feed) {
+        if (err){
+            res.send("DB Error: " + err);
+        }
+        else{
+            feed.comments.push(req.comment);
+            feed.save(function (err) {
+                if (err){
+                    res.send("DB Error: " + err);
+                }
+                else{
+                    res.send("Comment Added");
+                }
+            })
+        }
+    })
+});
+
+router.route("/upvote/:feedId").
+    post(function (req, res) {
+
+        Feed.findById(req.params.feedId, function (err, feed) {
+            if (err){
+                res.send("DB Error: " + err);
+            }
+            else {
+                feed.upvote.push(req.user);
+                feed.save(function (err) {
+                    if (err){
+                        res.send("DB Error: " + err);
+                    }
+                    else{
+                        res.send("Upvote Added");
+                    }
+                })
+            }
+        })
+});
+
+router.route("/downvote/:feedId").
+post(function (req, res) {
+
+    Feed.findById(req.params.feedId, function (err, feed) {
+        if (err){
+            res.send("DB Error: " + err);
+        }
+        else {
+            feed.upvote.splice(feed.upvote.indexOf(req.user),1);
+            feed.save(function (err) {
+                if (err){
+                    res.send("DB Error: " + err);
+                }
+                else{
+                    res.send("Upvote Added");
+                }
+            })
+        }
+    })
+});
+
 module.exports = router;
