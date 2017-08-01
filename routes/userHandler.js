@@ -10,10 +10,11 @@ var router = express.Router();
 var User = require('../model/user');
 
 router.route('/').
-post(function (req, res) {
+post(function (request, res) {
 
 
     var userData = {};
+    var req = request.body;
     userData.username = req.username;
     userData.password = req.password;
     userData.email = req.email;
@@ -42,9 +43,9 @@ post(function (req, res) {
 
 
 router.route('/:username').
-get(function (req, res) {
-
-    User.find({'username': req.params.username}, function (err, user) {
+get(function (request, res) {
+    var req = request.body;
+    User.find({'username': request.params.username}, function (err, user) {
         if (err){
             res.send("DB Error : " + err);
         }
@@ -56,16 +57,20 @@ get(function (req, res) {
         }
     })
 }).
-post(function (req, res) {
-
+post(function (request, res) {
+    var req = request.body;
     var userData = {};
     userData.password = req.password;
 
-    User.findOne({'username': req.params.username}, function (err, user) {
+    User.findOne({'username': request.params.username}, function (err, user) {
         if (err){
             res.send("DB Error : " + err);
         }
-        else if (userData.password !== user.password){
+        else if (q!user){
+            res.send("Error: User not present");
+        }
+        else if (req.password !== user.password){
+            console.log(req);
             res.send("Error: Incorrect Password");
         }
         else {
