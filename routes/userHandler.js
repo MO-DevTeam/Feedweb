@@ -66,7 +66,7 @@ post(function (request, res) {
         if (err){
             res.send("DB Error : " + err);
         }
-        else if (q!user){
+        else if (!user){
             res.send("Error: User not present");
         }
         else if (req.password !== user.password){
