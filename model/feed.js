@@ -16,7 +16,7 @@ var feedSchema = new Schema({
         type: String,
         required: true
     },
-    upvote: {
+    upvotes: {
         type: [String],
         default: []
     },
