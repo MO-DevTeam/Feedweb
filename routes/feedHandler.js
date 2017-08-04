@@ -13,14 +13,15 @@ router.route('/').
 
         Feed.find({}, function (err, feeds) {
             if(err)
-                res.send('DB Err : ' + err);
+                res.send('DB Error : ' + err);
             else
                 res.send(feeds);
         })
     }).
-    post(function (req, res) {
+    post(function (request, res) {
 
         var feedData = {};
+        req = request.body;
         feedData.title = req.title;
         feedData.content = req.content;
         feedData.author = req.author;
@@ -42,10 +43,25 @@ router.route('/').
 
 });
 
-router.route('/comment/:feedId').
-    post(function (req, res) {
+router.route('/:feedId').
+    get(function (req, res) {
 
-    Feed.findById(req.params.feedId, function (err, feed) {
+        Feed.findById(request.params.feedId, function (err, feed) {
+            if (err){
+                res.send("DB Error: " + err);
+            }
+            else{
+
+                res.send(feed);
+            }
+        } )
+});
+
+router.route('/comment/:feedId').
+    post(function (request, res) {
+
+    req = request.body;
+    Feed.findById(request.params.feedId, function (err, feed) {
         if (err){
             res.send("DB Error: " + err);
         }
@@ -64,9 +80,10 @@ router.route('/comment/:feedId').
 });
 
 router.route("/upvote/:feedId").
-    post(function (req, res) {
+    post(function (request, res) {
 
-        Feed.findById(req.params.feedId, function (err, feed) {
+    req = request.body;
+        Feed.findById(request.params.feedId, function (err, feed) {
             if (err){
                 res.send("DB Error: " + err);
             }
@@ -85,20 +102,21 @@ router.route("/upvote/:feedId").
 });
 
 router.route("/downvote/:feedId").
-post(function (req, res) {
+post(function (request, res) {
 
-    Feed.findById(req.params.feedId, function (err, feed) {
+    req = request.body;
+    Feed.findById(request.params.feedId, function (err, feed) {
         if (err){
             res.send("DB Error: " + err);
         }
         else {
-            feed.upvote.splice(feed.upvote.indexOf(req.user),1);
+            feed.upvote.splice(feed.upvote.indexOf(req.user), 1);
             feed.save(function (err) {
                 if (err){
                     res.send("DB Error: " + err);
                 }
                 else{
-                    res.send("Upvote Added");
+                    res.send("Upvote Removed");
                 }
             })
         }
