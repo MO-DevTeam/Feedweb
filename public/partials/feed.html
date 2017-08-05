@@ -1,0 +1,112 @@
+<!-- Feed page -->
+
+<!-- side nav -->
+<div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div id="MainProfileInfo" >
+        <div class="profileImg text-center">
+            <img id="profileImg" ng-src={{imgLink}} class="img-circle" width="80" height="80">
+        </div>
+
+        <div id="mainUserInfo" ng-click="openSubInfo()" class="text-center dropdown" style="color: dimgrey; font-size: 22px">
+            <div class="dropdown-toggle" data-toggle="dropdown" ng-click="rotateCaret()">
+                {{identity}}
+                <span class="caret"></span>
+            </div>
+            <ul style="width: 100%" class="dropdown-menu dropdown-menu-right">
+                <li ng-click="signOut()"><a class="text-center">Sign Out</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- content area -->
+<div id="main">
+    <!-- open side nav -->
+    <span id="open" style="font-size:30px;cursor:pointer; margin-bottom: 100px" onclick="openNav()">&#9776;</span>
+
+    <!-- Feed details-->
+    <div class="mFeed" style="margin-top: 20px">
+        <div class="feedDetails">
+            <div class="titleFeed">
+                {{feed.title}}
+                <small class="author">
+                    -{{feed.author}}
+                </small>
+            </div>
+            <div class="content">{{feed.content}}</div>
+            <div class="tagChips">
+                <div class="tag" ng-repeat="t in feed.tags">
+                    {{t}}
+                </div>
+            </div>
+            <div class="hr"></div>
+            <div style="display: flex; justify-content: space-between">
+                <div class="upvote">
+                    <div class="upvoteCount text-center">
+                        <div>{{feed.upvotes.length}}</div>
+                    </div>
+                    <div class="upvoteBtn" ng-click="upvote()">
+                        <div>UPVOTE</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" ng-init="showComments = false" style="margin: 8px 16px 8px 2%" ng-click="showComments = !showComments">
+                    Comments
+                    <span class="badge">{{feed.comments.length}}</span>
+                </button>
+            </div>
+            <div class="hr"></div>
+            <div class="comments" ng-show="showComments">
+
+
+                <div ng-repeat="x in feed.comments">
+                    <div style="display: flex">
+                        <img ng-src="{{setImage(x)}}" class="img-circle" width="40px" height="40px" style="margin: 1% 2% 1% 2%">
+                        <div  class="commentText">
+                            <div style="font-weight: bold">{{x.author}}</div>
+                            <div>{{x.comment}}</div>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                </div>
+
+
+                <div class="makeComment">
+                    <div class="input-group" style="padding: 2%">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-star-empty"></i></span>
+                        <input type="text" class="form-control" ng-model="commentInput" name="commentInput" placeholder="Comment" required>
+                        <span class="input-group-btn"><button ng-disabled="!commentInput.length" class="btn btn-primary" ng-click="commentBtn()"><span style="margin: 0 20px 0 20px" class="glyphicon glyphicon-send"></span> </button></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+<!--open and close side nav-->
+<script>
+    var openNav = function () {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "350px";
+        $('#open').css('opacity','0');
+        $('#open').css('cursor','default');
+    };
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        $('#open').css('opacity','1');
+        $('#open').css('cursor','pointer');
+    }
+
+</script>

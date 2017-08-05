@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-signin-client_id" content="878490171690-dbc9jpvj9hh08udv79ae9cl7j2o6dhjs.apps.googleusercontent.com">
+    <title>Feedweb</title>
+
+    <!-- bootstrap stylesheets -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/awesome-bootstrap-checkbox.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/font-awesome.css">
+
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+
+
+    <!-- css -->
+    <link href="main.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+
+<body ng-app="myApp" style="background-color: whitesmoke;">
+
+    <!-- navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="font-size: 32px">
+                    <span style="color: #9d9d9d">Feed</span><span style="color: #204d74">web</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main container -->
+    <div>
+        <div class="container container2" ui-view>
+        </div>
+    </div>
+
+    <!--snackbar-->
+    <div id="snackbar"></div>
+
+    <!-- External Libraries -->
+    <script src="bootstrap/js/jq.js"></script>
+    <script src="angular/libraries/angular.min.js"></script>
+    <script src="angular/libraries/ui-router.js"></script>
+    <script src="angular/libraries/aes.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- javascript -->
+    <script src="angular/main.js"></script>
+
+    <!--services-->
+    <script src="angular/services/authStorageAccess.js"></script>
+
+    <!-- angular controllers -->
+    <script src="angular/controllers/homeController.js"></script>
+    <script src="angular/controllers/feedsController.js"></script>
+    <script src="angular/controllers/feedController.js"></script>
+    <script src="angular/controllers/newFeedController.js"></script>
+
+</body>
+</html>

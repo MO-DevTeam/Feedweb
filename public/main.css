@@ -1,0 +1,327 @@
+
+
+body{
+
+    /*font-family: 'Ubuntu', sans-serif;*/
+    font-family: 'Merriweather', serif;
+
+    overflow-x: hidden;
+}
+
+/* navbar*/
+.navbar-brand{
+    color: rgba(255,255,255,0.75);
+    font-size: x-large;
+    display: flex
+}
+
+
+
+
+/* main container view */
+.container2 {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+
+
+
+
+/* App description*/
+#description{
+    font-size: 28px;
+    margin: 1% 0 2% 0;
+    width: 100%;
+}
+
+
+
+
+/* Authentication */
+.auth {
+    display: flex;
+    box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4);
+    background: #fefefe;
+    border-radius: 0;
+    overflow: hidden;
+}
+    /* navigation */
+.nav-auth {
+    width: 50%;
+    padding: 2%;
+}
+#logIn,#signUp:hover{
+    cursor: pointer;
+}
+
+.nav {
+    margin-bottom: 2%;
+}
+    /* input fields */
+.form-group {
+    margin: 4% 0 2% 0;
+}
+    /* social media account login */
+.social {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("images/social.jpeg");
+}
+    /* google button */
+#gSignInBtn {
+    margin: 10%;
+    width: 180px;
+    height: 46px;
+    cursor: pointer;
+}
+
+
+#topDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Side Navigation */
+.sidenav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+    /* sidenav links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+    /* side nav close button */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+    /* content area */
+#main {
+    transition: margin-left .5s;
+    width: 100%;
+}
+    /* sidenav open */
+#open {
+    transition: opacity .4s;
+}
+
+/* responsive */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+/* profile */
+.profileImg, #mainUserInfo{
+    padding: 3%;
+    margin: 3%;
+    transition: color .3s ease-out;
+}
+    /* sub user info */
+.caret {
+    transition: transform .3s ease-out;
+}
+.rotate {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.reset{
+    -ms-transform: unset;
+    -webkit-transform: unset;
+    transform: unset;
+}
+
+
+
+
+
+
+/* Feeds */
+.feed, .mFeed {
+    display: flex;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+
+.feed:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.feedDetails {
+    width: 100%;
+}
+
+.title {
+    font-weight: bold;
+    font-size: larger;
+    padding: 1.5% 1% 1% 1%;
+}
+
+.titleFeed {
+    font-weight: bold;
+    font-size: x-large;
+    padding: 2% 1% 1% 2%;
+}
+
+.tagChips {
+    display: flex;
+    margin-left: 1.5%;
+}
+
+.tag {
+    display: flex;
+    font-size: smaller;
+    background-color: #02b3e4;
+    border-radius: 2px;
+    margin: 5px 5px 10px 5px;
+    padding: 5px;
+    color: white;
+    word-wrap: break-word;
+}
+
+.tag2 {
+    display: flex;
+    font-size: smaller;
+    background-color: #02b3e4;
+    padding: 5px;
+    color: white;
+}
+
+.author {
+    font-weight: lighter;
+    font-size: small;
+    color: darkgray;
+    padding: .5% 1% .5% 1%;
+}
+
+.hr {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+}
+
+.content {
+    padding: .5% 1% 1% 2%;
+    font-size: medium;
+    white-space: pre-wrap
+}
+
+.upvote {
+    border: solid 2px dodgerblue;
+    border-radius: 4px;
+    display: flex;
+    margin: 8px 16px 8px 2%;
+}
+
+.upvoteCount {
+    background-color: dodgerblue;
+    text-align: center;
+    color: white;
+    padding: 8px 12px 8px 12px;
+}
+
+.upvoteBtn {
+    text-align: center;
+    padding: 8px 20px 8px 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transition: background-color .2s ease-out;
+}
+
+.makeComment {
+    display: flex;
+}
+
+.commentText {
+    padding: 1% 2% 1% 0;
+    width: 90%;
+}
+
+.comments{
+    transition: all .3s ease-out;
+}
+
+
+/* snackbar */
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+}
+
+#snackbar.show {
+    visibility: visible;
+
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

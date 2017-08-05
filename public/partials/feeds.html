@@ -1,0 +1,75 @@
+<!-- Feeds page -->
+
+<!-- side nav -->
+<div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div id="MainProfileInfo" >
+        <div class="profileImg text-center">
+            <img id="profileImg" ng-src={{imgLink}} class="img-circle" width="80" height="80">
+        </div>
+
+        <div id="mainUserInfo" ng-click="openSubInfo()" class="text-center dropdown" style="color: dimgrey; font-size: 22px">
+            <div class="dropdown-toggle" data-toggle="dropdown" ng-click="rotateCaret()">
+                {{identity}}
+                <span class="caret"></span>
+            </div>
+            <ul style="width: 100%" class="dropdown-menu dropdown-menu-right">
+                <li ng-click="signOut()"><a class="text-center">Sign Out</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <a ng-repeat="x in tags" ng-click="filterFeeds(x)" style="font-size: medium">{{x}}</a>
+</div>
+
+<!-- content area -->
+<div id="main">
+    <!-- open side nav -->
+    <div id="topDiv">
+        <span id="open" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
+        <button class="btn btn-primary" ui-sref="newFeed">New Feed</button>
+    </div>
+    <!-- feeds -->
+    <div class="col s12 m7" ng-repeat="x in feeds" style="margin-top: 20px">
+
+        <div class="feed" ui-sref="feed({ id: '{{x._id}}'})">
+            <div class="feedDetails">
+                <div class="title">
+                    {{x.title}}
+                </div>
+                <div class="tagChips" style="margin-left: .5%">
+                    <div class="tag" ng-repeat="t in x.tags">
+                        {{t}}
+                    </div>
+                </div>
+                <div class="hr"></div>
+                <div class="author">
+                    @{{x.author}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+ <!--open and close side nav-->
+<script>
+    var openNav = function () {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "350px";
+        $('#open').css('opacity','0');
+        $('#open').css('cursor','default');
+    };
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        $('#open').css('opacity','1');
+        $('#open').css('cursor','pointer');
+    }
+
+</script>

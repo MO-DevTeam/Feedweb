@@ -1,0 +1,101 @@
+<!-- New Feed page -->
+
+<!-- side nav -->
+<div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div id="MainProfileInfo" >
+        <div class="profileImg text-center">
+            <img id="profileImg" ng-src={{imgLink}} class="img-circle" width="80" height="80">
+        </div>
+
+        <div id="mainUserInfo" ng-click="openSubInfo()" class="text-center dropdown" style="color: dimgrey; font-size: 22px">
+            <div class="dropdown-toggle" data-toggle="dropdown" ng-click="rotateCaret()">
+                {{identity}}
+                <span class="caret"></span>
+            </div>
+            <ul style="width: 100%" class="dropdown-menu dropdown-menu-right">
+                <li ng-click="signOut()"><a class="text-center">Sign Out</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- content area -->
+<div id="main">
+    <!-- open side nav -->
+    <span id="open" style="font-size:30px;cursor:pointer; margin-bottom: 100px" onclick="openNav()">&#9776;</span>
+
+    <!-- New Feed -->
+
+    <div class="feedDetails feed" style="margin-top: 20px">
+        <form class="feedForm">
+            <label style="padding: 2%; font-size: larger">New Feed:</label>
+            <div class="input-group" style="padding: 0 2% 0 2%">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-star-empty"></i></span>
+                <input type="text" class="form-control" ng-model="title" name="title" placeholder="Title" required>
+
+            </div>
+            <div class="alert alert-danger" style="margin: 2% 2% 0 2%" ng-show="feedForm.title.$touched && feedForm.title.$invalid">
+                <strong>Error:</strong> Title cannot be empty!
+            </div>
+            <div class="input-group" style="padding: 2% 2% 0 2%">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                <textarea style="resize: none" class="form-control" rows="5" ng-model="content" name="content" placeholder="Content" required></textarea>
+
+            </div>
+            <div class="alert alert-danger" style="margin: 2% 2% 0 2%" ng-show="feedForm.content.$touched && feedForm.content.$invalid">
+                <strong>Error:</strong> Content cannot be empty!
+            </div>
+
+            <div class="dropdown">
+                <div class="input-group dropdown-toggle" style="margin: 2% 2% 0 2%; width: 96%; " data-toggle="dropdown">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
+                    <div class="input-group-addon" ng-repeat="k in addedTags" style="background-color: white">
+                        <div >
+                            <span>{{k}}</span>
+                            <span class="glyphicon glyphicon-remove" ng-click="removeTag(k)"></span>
+                        </div>
+
+                    </div>
+
+                    <input id="tagInput" class="form-control" type="text" ng-model="searchTag" placeholder="Tags">
+                </div>
+                <ul class="dropdown-menu" style="margin-left: 2%; width: 96%">
+                    <li ng-repeat="n in tagRefine | filter: searchTag"><a ng-click="addTag(n)">{{n}}</a></li>
+                </ul>
+            </div>
+
+            <div class="input-group" style="display: flex; width: 100%; justify-content: center">
+                <button class="btn btn-primary" style="margin: 2%" ng-click="post()">
+                    Post
+                    <span class="glyphicon glyphicon-ok-sign"></span>
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+
+<!--open and close side nav-->
+<script>
+    var openNav = function () {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "350px";
+        $('#open').css('opacity','0');
+        $('#open').css('cursor','default');
+    };
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        $('#open').css('opacity','1');
+        $('#open').css('cursor','pointer');
+    }
+
+</script>
