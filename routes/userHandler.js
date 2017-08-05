@@ -21,7 +21,7 @@ post(function (request, res) {
     userData.name = req.name;
 
     User.find({'username' : userData.username}, function (err, user) {
-            if (user !== []){
+            if (err.name === 'MongoError' && err.code === 11000){
                 res.send("Error: Username is not unique")
             }
             else{
