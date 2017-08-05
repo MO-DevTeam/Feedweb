@@ -9,8 +9,7 @@ var router = express.Router();
 
 var User = require('../model/user');
 
-router.route('/').
-post(function (request, res) {
+router.route('/').post(function (request, res) {
 
 
     var userData = {};
@@ -19,57 +18,49 @@ post(function (request, res) {
     userData.password = req.password;
     userData.email = req.email;
     userData.name = req.name;
+    var newUser = new User(userData);
 
-    User.find({'username' : userData.username}, function (err, user) {
-            if (err.name === 'MongoError' && err.code === 11000){
-                res.send("Error: Username is not unique")
-            }
-            else{
-                var newUser = new User(userData);
-
-                newUser.save(function (err, user) {
-
-                    if(err) {
-                        res.send("DB Error : " + err);
-                    }
-                    else{
-                        res.send("New User Added");
-                    }
-                });
-            }
-        });
+    newUser.save(function (err, user) {
+        if (err.name === 'MongoError' && err.code === 11000){
+            res.send("Error: Username is not unique")
+        }
+        else if (err) {
+            res.send("DB Error : " + err);
+        }
+        else {
+            res.send("New User Added");
+        }
+    });
 
 });
 
 
-router.route('/:username').
-get(function (request, res) {
+router.route('/:username').get(function (request, res) {
     var req = request.body;
     User.find({'username': request.params.username}, function (err, user) {
-        if (err){
+        if (err) {
             res.send("DB Error : " + err);
         }
-        else if (!user){
+        else if (!user) {
             res.send("Error: User not present");
         }
         else {
             res.send(user);
         }
     })
-}).
-post(function (request, res) {
+}).post(function (request, res) {
     var req = request.body;
     var userData = {};
     userData.password = req.password;
 
     User.findOne({'username': request.params.username}, function (err, user) {
-        if (err){
+        if (err) {
             res.send("DB Error : " + err);
         }
-        else if (!user){
+        else if (!user) {
             res.send("Error: User not present");
         }
-        else if (req.password !== user.password){
+        else if (req.password !== user.password) {
             console.log(req);
             res.send("Error: Incorrect Password");
         }
