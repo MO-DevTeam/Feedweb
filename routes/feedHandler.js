@@ -66,7 +66,7 @@ router.route('/comment/:feedId').
             res.send("DB Error: " + err);
         }
         else{
-            feed.comments.push(req.comment);
+            feed.comments.push(req);
             feed.save(function (err) {
                 if (err){
                     res.send("DB Error: " + err);
