@@ -5,12 +5,12 @@
 
     <a class="closebtn" ng-click="closeNav()">&times;</a>
 
-    <div id="MainProfileInfo" >
+    <div id="MainProfileInfo>
         <div class="profileImg text-center">
             <img id="profileImg" ng-src={{imgLink}} class="img-circle" width="80" height="80">
         </div>
 
-        <div id="mainUserInfo" ng-click="openSubInfo()" class="text-center dropdown" style="color: dimgrey; font-size: 22px">
+        <div id="mainUserInfo" ng-click="openSubInfo()" class="text-center dropdown" style="color: dimgrey; cursor: pointer; font-size: 22px">
             <div class="dropdown-toggle" data-toggle="dropdown" ng-click="rotateCaret()">
                 {{identity}}
                 <span class="caret"></span>
