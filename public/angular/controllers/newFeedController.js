@@ -114,7 +114,7 @@ var newFeedController = function ($scope, $state, $http, authStorageAccess) {
         $http(
             {
                 method: 'POST',
-                url: "http://localhost:3000/api/feeds",
+                url: "https://feedweb.herokuapp.com/api/feeds",
                 data: feedData
             }
         ).then(

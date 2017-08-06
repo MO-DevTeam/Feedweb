@@ -50,7 +50,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
     $http(
         {
             method: 'GET',
-            url: "http://localhost:3000/api/feeds/" + $stateParams.id
+            url: "https://feedweb.herokuapp.com/api/feeds/" + $stateParams.id
         }
     ).then(
         function successCallback(response) {
@@ -81,7 +81,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
         $http(
             {
                 method: "POST",
-                url: "http://localhost:3000/api/feeds/comment/" + $stateParams.id,
+                url: "https://feedweb.herokuapp.com/api/feeds/comment/" + $stateParams.id,
                 data: comment2
             }
         ).then(
@@ -109,7 +109,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
             $http(
                 {
                     method: 'POST',
-                    url: "http://localhost:3000/api/feeds/upvote/" + $stateParams.id,
+                    url: "https://feedweb.herokuapp.com/api/feeds/upvote/" + $stateParams.id,
                     data:{
                         'user': userDetails.username
                     }
@@ -135,7 +135,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
             $http(
                 {
                     method: 'POST',
-                    url: "http://localhost:3000/api/feeds/downvote/" + $stateParams.id,
+                    url: "https://feedweb.herokuapp.com/api/feeds/downvote/" + $stateParams.id,
                     data:{
                         'user': userDetails.username
                     }

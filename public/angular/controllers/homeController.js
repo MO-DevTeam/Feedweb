@@ -104,7 +104,7 @@ var homeController = function ($scope, $state, $http, authStorageAccess) {
             var loginData = {
                 "password": $scope.password
             };
-            var loginUrl = "http://localhost:3000/api/users/" + $scope.username;
+            var loginUrl = "https://feedweb.herokuapp.com/api/users/" + $scope.username;
 
             // POST request for login
             $http({
@@ -155,7 +155,7 @@ var homeController = function ($scope, $state, $http, authStorageAccess) {
                 "email": $scope.email,
                 "name": $scope.name
             };
-            var signupUrl = "http://localhost:3000/api/users";
+            var signupUrl = "https://feedweb.herokuapp.com/api/users";
             $http({
                 method: 'POST',
                 url: signupUrl,

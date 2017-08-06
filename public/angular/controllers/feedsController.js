@@ -51,7 +51,7 @@ var feedsController = function ($scope, $state, $http, authStorageAccess) {
     $http(
         {
             method: "GET",
-            url: "http://localhost:3000/api/feeds"
+            url: "https://feedweb.herokuapp.com/api/feeds"
         }
     ).then(
         function successCallback(response) {
