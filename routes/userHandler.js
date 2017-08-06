@@ -21,7 +21,8 @@ router.route('/').post(function (request, res) {
     var newUser = new User(userData);
 
     newUser.save(function (err, user) {
-        if (err.name === 'MongoError' && err.code === 11000){
+        if (err && err.name === 'MongoError' && err.code === 11000){
+            console.log(err);
             res.send("Error: Username is not unique")
         }
         else if (err) {

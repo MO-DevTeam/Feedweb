@@ -101,7 +101,7 @@ var newFeedController = function ($scope, $state, $http, authStorageAccess) {
         $('#mainUserInfo').css('color','dimgrey')
     });
 
-
+    // post the feed
     $scope.post = function () {
 
         var feedData = {

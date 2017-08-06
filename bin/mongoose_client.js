@@ -5,7 +5,7 @@
 var mongoose = require("mongoose");
 
 var connectDB = function (callback, fallback) {
-    mongoose.connect('mongodb://localhost:27017');
+    mongoose.connect('mongodb://mo-devteam:mo-devteam3123@ds161042.mlab.com:61042/feedweb-db');
     var db = mongoose.connection;
     db.on('error',function (error) {
         fallback(error);

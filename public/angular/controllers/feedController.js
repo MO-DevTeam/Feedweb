@@ -12,7 +12,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
     $scope.feed = {};
 
 
-
+    // modify upVote button
     $scope.modUpvoteBtn = function () {
         if(!upvoteActive){
             $('.upvoteBtn').css({'background-color':'dodgerblue', 'color':'white'});
@@ -70,6 +70,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
         }
     );
 
+    // comment button
     $scope.commentBtn = function () {
         var comment2 = {
             "comment": $scope.commentInput,
@@ -99,6 +100,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
 
     };
 
+    // upvote
     $scope.upvote = function () {
 
         if(upvoteActive){
@@ -199,6 +201,7 @@ var feedController = function ($scope, $state, $http, $stateParams, authStorageA
         }
     };
 
+    // set image to a user
     $scope.setImage = function (comment) {
         if (comment.img){
             return comment.img;
