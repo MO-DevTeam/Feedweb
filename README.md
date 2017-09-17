@@ -1,12 +1,8 @@
 # Feedweb
 
-Web of feeds
-
 A web portal where users can post information on various topics under a category. Users can also view, comment on, up vote for various posts. 
 
 A demo of showing the working can be found here: [Visit](https://feedweb.herokuapp.com)
-
-This project was earlier Web Ocr but changes were made: removing redundancies and reducing file size
  
 ### Frontend Tools
 * Angular js
